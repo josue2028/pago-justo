@@ -3,7 +3,6 @@ import {
   Pie,
   PieChart,
   ResponsiveContainer,
-  Tooltip as RechartsTooltip,
 } from 'recharts';
 import { Badge, Card } from '@core/ui';
 import { CURRENT_LEGAL_RATES } from '@core/engine/constants/colombiaRates';
@@ -39,7 +38,7 @@ export function ResultsDashboard({ input, result }: ResultsDashboardProps): JSX.
 
   return (
     <div className="space-y-6">
-      <Card className="space-y-4">
+      <Card className="space-y-4 p-4 md:p-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-sm font-medium text-brand-muted">
@@ -47,7 +46,7 @@ export function ResultsDashboard({ input, result }: ResultsDashboardProps): JSX.
                 ? 'Liquidacion contratista independiente'
                 : `Liquidacion empleado - ${humanizeContract(input.contractType)}`}
             </p>
-            <h2 className="mt-2 text-2xl font-bold text-brand-text">
+            <h2 className="mt-2 text-xl font-bold text-brand-text md:text-2xl">
               {formatDateRange(input.startDate ?? new Date(), input.endDate ?? new Date())} - {result.metadata.workingDays} dias
             </h2>
           </div>
@@ -87,7 +86,7 @@ export function ResultsDashboard({ input, result }: ResultsDashboardProps): JSX.
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
-        <Card className="space-y-4">
+        <Card className="space-y-4 p-4 md:p-6">
           <details open>
             <summary className="cursor-pointer font-semibold text-brand-text">Seguridad social y responsables</summary>
             <DataTable
@@ -217,18 +216,18 @@ export function ResultsDashboard({ input, result }: ResultsDashboardProps): JSX.
           </details>
         </Card>
 
-        <Card className="space-y-4">
+        <Card className="space-y-4 p-4 md:p-6">
           <h3 className="font-semibold text-brand-text">Distribucion del calculo</h3>
-          <div className="rounded-[1.75rem] border border-slate-100 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] p-6 shadow-sm">
-            <div className="relative mx-auto h-80 w-full max-w-[360px]">
+          <div className="rounded-[1.75rem] border border-slate-100 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] p-4 shadow-sm md:p-6">
+            <div className="relative mx-auto h-64 w-full max-w-[280px] sm:h-72 sm:max-w-[320px] md:h-80 md:max-w-[360px]">
               <ResponsiveContainer>
                 <PieChart>
                   <Pie
                     data={visibleChartData}
                     dataKey="value"
                     nameKey="name"
-                    innerRadius={82}
-                    outerRadius={122}
+                    innerRadius={72}
+                    outerRadius={108}
                     paddingAngle={2}
                     stroke="#ffffff"
                     strokeWidth={4}
@@ -240,18 +239,37 @@ export function ResultsDashboard({ input, result }: ResultsDashboardProps): JSX.
                       />
                     ))}
                   </Pie>
-                  <RechartsTooltip formatter={(value) => formatCurrency(Number(value ?? 0))} />
                 </PieChart>
               </ResponsiveContainer>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <div className="rounded-full bg-white px-6 py-5 text-center shadow-sm ring-1 ring-slate-100">
+                <div className="rounded-full bg-white px-4 py-4 text-center shadow-sm ring-1 ring-slate-100 md:px-6 md:py-5">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-muted">Total</p>
-                  <p className="mt-1 text-lg font-bold leading-none text-brand-text">
+                  <p className="mt-1 text-base font-bold leading-none text-brand-text md:text-lg">
                     {formatCurrency(totalDistribution)}
                   </p>
                   <p className="mt-2 text-xs text-brand-muted">{visibleChartData.length} rubros calculados</p>
                 </div>
               </div>
+            </div>
+            <div className="mt-4 grid gap-3">
+              {visibleChartData.map((entry, index) => (
+                <div
+                  key={entry.name}
+                  className="flex items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-white px-3 py-3"
+                >
+                  <div className="flex min-w-0 items-center gap-3">
+                    <span
+                      className="size-3 shrink-0 rounded-full"
+                      style={{ backgroundColor: COLORS[index] }}
+                    />
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium leading-5 text-brand-text">{entry.name}</p>
+                      <p className="text-xs text-brand-muted">{formatPercentage(entry.value / totalDistribution)} del total</p>
+                    </div>
+                  </div>
+                  <p className="shrink-0 text-sm font-semibold text-brand-text">{formatCurrency(entry.value)}</p>
+                </div>
+              ))}
             </div>
           </div>
           <div className="space-y-2 rounded-2xl bg-slate-50 p-4 text-sm text-brand-muted">

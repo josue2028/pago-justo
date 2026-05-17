@@ -62,9 +62,27 @@ export function StepWizard(): JSX.Element {
     }
   };
 
+  const handleRoleChange = (role: CalculatorInput['role']) => {
+    updateInput({ role });
+  };
+
+  const handleContractTypeChange = (contractType: CalculatorInput['contractType']) => {
+    updateInput({ contractType });
+  };
+
+  const handleRoleDoubleSelect = (role: CalculatorInput['role']) => {
+    updateInput({ role });
+    setStep(2);
+  };
+
+  const handleContractDoubleSelect = (contractType: CalculatorInput['contractType']) => {
+    updateInput({ contractType });
+    setStep(3);
+  };
+
   return (
-    <div className="space-y-6">
-      <Card className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
+      <Card className="space-y-5 p-4 md:space-y-6 md:p-6">
         <Stepper
           currentStep={currentStep}
           totalSteps={steps.length}
@@ -72,19 +90,21 @@ export function StepWizard(): JSX.Element {
         />
         <div
           aria-current="step"
-          className="min-h-[22rem] transition-all"
+          className="min-h-[20rem] transition-all md:min-h-[22rem]"
         >
           {currentStep === 1 ? (
             <RoleSelector
               value={input.role ?? 'EMPLEADO_DEPENDIENTE'}
-              onChange={(role) => updateInput({ role })}
+              onChange={handleRoleChange}
+              onDoubleSelect={handleRoleDoubleSelect}
             />
           ) : null}
           {currentStep === 2 ? (
             <ContractTypeSelector
               role={input.role ?? 'EMPLEADO_DEPENDIENTE'}
               value={input.contractType}
-              onChange={(contractType) => updateInput({ contractType })}
+              onChange={handleContractTypeChange}
+              onDoubleSelect={handleContractDoubleSelect}
             />
           ) : null}
           {currentStep === 3 ? (

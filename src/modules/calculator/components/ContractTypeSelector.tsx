@@ -6,6 +6,7 @@ interface ContractTypeSelectorProps {
   role: UserRole;
   value?: ContractType;
   onChange: (value: ContractType) => void;
+  onDoubleSelect?: (value: ContractType) => void;
 }
 
 const contracts: { value: ContractType; label: string; helper: string }[] = [
@@ -15,7 +16,7 @@ const contracts: { value: ContractType; label: string; helper: string }[] = [
   { value: 'MEDIO_TIEMPO', label: 'Medio tiempo', helper: 'Con IBC mínimo del 50% del SMMLV.' },
 ];
 
-export function ContractTypeSelector({ role, value, onChange }: ContractTypeSelectorProps): JSX.Element {
+export function ContractTypeSelector({ role, value, onChange, onDoubleSelect }: ContractTypeSelectorProps): JSX.Element {
   if (role === 'CONTRATISTA_INDEPENDIENTE') {
     return (
       <Card className="bg-slate-50">
@@ -34,6 +35,7 @@ export function ContractTypeSelector({ role, value, onChange }: ContractTypeSele
           key={contract.value}
           type="button"
           onClick={() => onChange(contract.value)}
+          onDoubleClick={() => onDoubleSelect?.(contract.value)}
           className="text-left"
         >
           <Card className={cn(value === contract.value && 'border-brand-blue bg-brand-blue/5')}>

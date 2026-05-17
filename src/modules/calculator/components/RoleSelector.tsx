@@ -7,6 +7,7 @@ import { LegalTooltip } from './LegalTooltip';
 interface RoleSelectorProps {
   value: UserRole;
   onChange: (value: UserRole) => void;
+  onDoubleSelect?: (value: UserRole) => void;
 }
 
 const options = [
@@ -24,7 +25,7 @@ const options = [
   },
 ];
 
-export function RoleSelector({ value, onChange }: RoleSelectorProps): JSX.Element {
+export function RoleSelector({ value, onChange, onDoubleSelect }: RoleSelectorProps): JSX.Element {
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {options.map((option) => {
@@ -36,6 +37,7 @@ export function RoleSelector({ value, onChange }: RoleSelectorProps): JSX.Elemen
             key={option.value}
             type="button"
             onClick={() => onChange(option.value)}
+            onDoubleClick={() => onDoubleSelect?.(option.value)}
             className="text-left"
           >
             <Card className={cn(isActive && 'border-brand-blue bg-brand-blue/5')}>
