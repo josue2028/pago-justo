@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { calculateAll } from '@/core/engine/calculators';
-import { CURRENT_LEGAL_RATES } from '@/core/engine/constants/colombiaRates';
-import type { CalculatorInput } from '@/core/engine/types/calculator.types';
+import { calculateAll } from '@domain/calculator/calculators';
+import { CURRENT_LEGAL_RATES } from '@domain/calculator/constants/colombiaRates';
+import type { CalculatorInput } from '@domain/calculator/types/calculator.types';
 
 describe('edge cases', () => {
   it('mantiene auxilio exactamente en 2 smmlv', () => {

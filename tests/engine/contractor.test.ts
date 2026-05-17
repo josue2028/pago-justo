@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { calculateAll } from '@/core/engine/calculators';
-import type { CalculatorInput } from '@/core/engine/types/calculator.types';
+import { calculateAll } from '@domain/calculator/calculators';
+import type { CalculatorInput } from '@domain/calculator/types/calculator.types';
 
 describe('contractor flow', () => {
   it('usa ibc del 40% y no genera prestaciones ni parafiscales', () => {

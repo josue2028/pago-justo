@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { vi } from 'vitest';
-import { CurrencyInput } from '@/core/ui';
+import { CurrencyInput } from '@shared/ui';
 
 describe('CurrencyInput', () => {
   it('formatea moneda y conserva aria-label', async () => {

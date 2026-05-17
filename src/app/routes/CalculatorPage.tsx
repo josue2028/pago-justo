@@ -7,9 +7,9 @@ import {
   ScenarioComparator,
   StepWizard,
   useCalculatorStore,
-} from '@features/calculator';
-import { fromBase64Url } from '@core/utils/validators';
-import type { CalculatorInput } from '@core/engine/types/calculator.types';
+} from '@modules/calculator';
+import { fromBase64Url } from '@shared/lib/validators';
+import type { CalculatorInput } from '@domain/calculator/types/calculator.types';
 
 export default function CalculatorPage(): JSX.Element {
   const [searchParams] = useSearchParams();

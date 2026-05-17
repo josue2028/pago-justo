@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Calculator } from 'lucide-react';
-import { HeroSection } from '@features/landing';
-import { Button, Card } from '@core/ui';
+import { HeroSection } from '@modules/landing';
+import { Button, Card } from '@shared/ui';
 
 export default function HomePage(): JSX.Element {
   return (

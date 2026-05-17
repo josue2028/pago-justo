@@ -10,8 +10,19 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-      '@core': resolve(__dirname, './src/core'),
-      '@features': resolve(__dirname, './src/features'),
+      '@app': resolve(__dirname, './src/app'),
+      '@domain': resolve(__dirname, './src/domain'),
+      '@modules': resolve(__dirname, './src/modules'),
+      '@shared': resolve(__dirname, './src/shared'),
+      '@core/engine': resolve(__dirname, './src/domain/calculator'),
+      '@core/ui': resolve(__dirname, './src/shared/ui'),
+      '@core/utils': resolve(__dirname, './src/shared/lib'),
+      '@features': resolve(__dirname, './src/modules'),
+      '@/core/engine': resolve(__dirname, './src/domain/calculator'),
+      '@/core/ui': resolve(__dirname, './src/shared/ui'),
+      '@/core/utils': resolve(__dirname, './src/shared/lib'),
+      '@/features': resolve(__dirname, './src/modules'),
+      '@/pages': resolve(__dirname, './src/app/routes'),
     },
   },
   test: {
@@ -21,7 +32,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
-      include: ['src/core/engine/**/*.ts'],
+      include: ['src/domain/calculator/**/*.ts'],
     },
   },
 });

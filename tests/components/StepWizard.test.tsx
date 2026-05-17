@@ -1,7 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { StepWizard, useCalculatorStore } from '@/features/calculator';
+import { StepWizard, useCalculatorStore } from '@modules/calculator';
 
 describe('StepWizard', () => {
   it('avanza entre pasos', async () => {

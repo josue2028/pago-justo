@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { calculateAll } from '@/core/engine/calculators';
-import type { CalculatorInput } from '@/core/engine/types/calculator.types';
-import { ResultsDashboard } from '@/features/calculator';
+import { calculateAll } from '@domain/calculator/calculators';
+import type { CalculatorInput } from '@domain/calculator/types/calculator.types';
+import { ResultsDashboard } from '@modules/calculator';
 
 describe('ResultsDashboard', () => {
   it('renderiza metricas principales', () => {
@@ -25,7 +25,7 @@ describe('ResultsDashboard', () => {
     );
 
     expect(screen.getByText(/Costo total empleador/i)).toBeInTheDocument();
-    expect(screen.getByText(/Prestaciones del período/i)).toBeInTheDocument();
+    expect(screen.getByText(/Prestaciones del periodo/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Exento/i).length).toBeGreaterThan(0);
   });
 
@@ -49,6 +49,6 @@ describe('ResultsDashboard', () => {
     );
 
     expect(screen.getByText(/Parafiscales/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/\$0 por prestación de servicios/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/\$0 por prestacion de servicios/i).length).toBeGreaterThan(0);
   });
 });

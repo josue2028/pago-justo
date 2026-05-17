@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { calculateParafiscales } from '@/core/engine/calculators/parafiscales';
-import type { CalculatorInput } from '@/core/engine/types/calculator.types';
+import { calculateParafiscales } from '@domain/calculator/calculators/parafiscales';
+import type { CalculatorInput } from '@domain/calculator/types/calculator.types';
 
 const employeeInput: CalculatorInput = {
   role: 'EMPLEADO_DEPENDIENTE',

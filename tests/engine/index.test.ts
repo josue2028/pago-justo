@@ -4,9 +4,9 @@ import {
   calculateFinalSettlement,
   calculateSalaryIncrease,
   compareScenarios,
-} from '@/core/engine/calculators';
-import { calculateContractorIbc } from '@/core/engine/calculators/contractor';
-import type { CalculatorInput } from '@/core/engine/types/calculator.types';
+} from '@domain/calculator/calculators';
+import { calculateContractorIbc } from '@domain/calculator/calculators/contractor';
+import type { CalculatorInput } from '@domain/calculator/types/calculator.types';
 
 const employeeInput: CalculatorInput = {
   role: 'EMPLEADO_DEPENDIENTE',

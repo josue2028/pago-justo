@@ -1,11 +1,11 @@
 import { Suspense, lazy } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Card } from '@core/ui';
+import { Card } from '@shared/ui';
 import { ErrorBoundary } from './ErrorBoundary';
 
-const HomePage = lazy(() => import('@/pages/HomePage'));
-const CalculatorPage = lazy(() => import('@/pages/CalculatorPage'));
-const ResultsPage = lazy(() => import('@/pages/ResultsPage'));
+const HomePage = lazy(() => import('@app/routes/HomePage'));
+const CalculatorPage = lazy(() => import('@app/routes/CalculatorPage'));
+const ResultsPage = lazy(() => import('@app/routes/ResultsPage'));
 
 const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },

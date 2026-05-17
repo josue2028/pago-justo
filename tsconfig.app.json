@@ -21,8 +21,21 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@core/*": ["src/core/*"],
-      "@features/*": ["src/features/*"]
+      "@app/*": ["src/app/*"],
+      "@domain/*": ["src/domain/*"],
+      "@modules/*": ["src/modules/*"],
+      "@shared/*": ["src/shared/*"],
+      "@core/engine/*": ["src/domain/calculator/*"],
+      "@core/ui": ["src/shared/ui/index.ts"],
+      "@core/ui/*": ["src/shared/ui/*"],
+      "@core/utils/*": ["src/shared/lib/*"],
+      "@features/*": ["src/modules/*"],
+      "@/core/engine/*": ["src/domain/calculator/*"],
+      "@/core/ui": ["src/shared/ui/index.ts"],
+      "@/core/ui/*": ["src/shared/ui/*"],
+      "@/core/utils/*": ["src/shared/lib/*"],
+      "@/features/*": ["src/modules/*"],
+      "@/pages/*": ["src/app/routes/*"]
     },
     "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom", "node"]
   },

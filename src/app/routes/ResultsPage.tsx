@@ -1,8 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ResultsDashboard, useCalculatorStore } from '@features/calculator';
-import { ExportPanel } from '@features/export';
-import { Button, Card } from '@core/ui';
-import type { CalculatorInput } from '@core/engine/types/calculator.types';
+import { ResultsDashboard, useCalculatorStore } from '@modules/calculator';
+import { ExportPanel } from '@modules/export';
+import { Button, Card } from '@shared/ui';
+import type { CalculatorInput } from '@domain/calculator/types/calculator.types';
 
 export default function ResultsPage(): JSX.Element {
   const navigate = useNavigate();

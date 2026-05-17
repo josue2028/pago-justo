@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { calculateSocialSecurity } from '@/core/engine/calculators/socialSecurity';
-import type { CalculatorInput } from '@/core/engine/types/calculator.types';
+import { calculateSocialSecurity } from '@domain/calculator/calculators/socialSecurity';
+import type { CalculatorInput } from '@domain/calculator/types/calculator.types';
 
 const baseInput: CalculatorInput = {
   role: 'EMPLEADO_DEPENDIENTE',
